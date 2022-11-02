@@ -26,7 +26,10 @@ final class TogglableSampler implements SamplerInterface, ResetInterface
     {
     }
 
-    public function shouldSample(Context $parentContext, string $traceId, string $spanName, int $spanKind, AttributesInterface $attributes, array $links): SamplingResult
+    /**
+     * @param AttributesInterface<string,string> $attributes
+     */
+    public function shouldSample(Context $parentContext, string $traceId, string $spanName, int $spanKind, AttributesInterface $attributes, array $links = []): SamplingResult
     {
         $result = $this->decorated->shouldSample($parentContext, $traceId, $spanName, $spanKind, $attributes, $links);
 

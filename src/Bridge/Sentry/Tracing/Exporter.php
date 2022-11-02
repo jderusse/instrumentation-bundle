@@ -11,7 +11,6 @@ namespace Instrumentation\Bridge\Sentry\Tracing;
 
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr17FactoryDiscovery;
-use JsonException;
 use Nyholm\Dsn\DsnParser;
 use OpenTelemetry\SDK\Trace\Behavior\HttpSpanExporterTrait;
 use OpenTelemetry\SDK\Trace\Behavior\UsesSpanConverterTrait;
@@ -50,7 +49,7 @@ class Exporter implements SpanExporterInterface
     /**
      * @param iterable<SpanDataInterface> $spans
      *
-     * @throws JsonException
+     * @throws \JsonException
      */
     protected function serializeTrace(iterable $spans): string
     {
@@ -113,7 +112,7 @@ class Exporter implements SpanExporterInterface
     /**
      * @param iterable<SpanDataInterface> $spans
      *
-     * @throws JsonException
+     * @throws \JsonException
      */
     protected function marshallRequest(iterable $spans): RequestInterface
     {
