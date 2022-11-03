@@ -76,7 +76,7 @@ class CommandEventSubscriber implements EventSubscriberInterface
         $this->span = null;
 
         if ($this->tracerProvider instanceof TracerProvider) {
-            $this->tracerProvider->forceFlush();
+            $this->tracerProvider->shutdown();
         }
     }
 }
