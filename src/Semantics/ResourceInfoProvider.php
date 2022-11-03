@@ -27,6 +27,6 @@ class ResourceInfoProvider implements ResourceInfoProviderInterface
         $default = ResourceInfoFactory::defaultResource();
         $attributes = array_merge($default->getAttributes()->toArray(), $this->attributes);
 
-        return ResourceInfo::create(new Attributes($attributes, 0));
+        return ResourceInfo::create(Attributes::create($attributes));
     }
 }

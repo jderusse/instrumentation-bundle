@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Instrumentation\Tracing\Factory;
 
-use InvalidArgumentException;
 use Nyholm\Dsn\DsnParser;
 use OpenTelemetry\SDK\Common\Time\ClockFactory;
 use OpenTelemetry\SDK\Trace\SpanExporterInterface;
@@ -34,8 +33,9 @@ class SpanProcessorFactory
         return match ($type) {
             self::BATCH => new BatchSpanProcessor($exporter, ClockFactory::getDefault()),
             self::SIMPLE => new SimpleSpanProcessor($exporter),
-            self::NOOP, self::NONE => NoopSpanProcessor::getInstance(),
-            default => throw new InvalidArgumentException('Unknown processor: '.$type)
+            self::NOOP => NoopSpanProcessor::getInstance(),
+            self::NONE => NoopSpanProcessor::getInstance(),
+            default => throw new \InvalidArgumentException('Unknown processor: '.$type)
         };
     }
 
