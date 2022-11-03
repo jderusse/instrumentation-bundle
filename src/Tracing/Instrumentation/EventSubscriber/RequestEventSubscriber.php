@@ -143,7 +143,7 @@ class RequestEventSubscriber implements EventSubscriberInterface
         $this->serverSpan?->end();
 
         if ($this->tracerProvider instanceof TracerProvider) {
-            $this->tracerProvider->forceFlush();
+            $this->tracerProvider->shutdown();
         }
     }
 
