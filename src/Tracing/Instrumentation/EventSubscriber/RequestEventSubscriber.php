@@ -106,6 +106,7 @@ class RequestEventSubscriber implements EventSubscriberInterface
 
             $this->serverSpan?->updateName($operationName);
             $this->serverSpan?->setAttributes($attributes);
+            $this->mainSpanContext->setOperationName($operationName);
         }
     }
 

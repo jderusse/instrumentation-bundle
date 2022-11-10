@@ -55,6 +55,7 @@ class CommandEventSubscriber implements EventSubscriberInterface
         $this->scope = $this->span->activate();
 
         $this->mainSpanContext->setMainSpan($this->span);
+        $this->mainSpanContext->setOperationName($operationName);
     }
 
     public function onError(ConsoleErrorEvent $event): void
